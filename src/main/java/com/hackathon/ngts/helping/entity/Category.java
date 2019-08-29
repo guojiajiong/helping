@@ -13,6 +13,8 @@ public class Category {
 
     private String category_name;
 
+    private String img_url;
+
     private String description;
 
 }

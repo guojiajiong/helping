@@ -14,6 +14,8 @@ public class ArticleVo extends Article {
 
     private String category_name;
 
+    private String img_url;
+
     private String owner_name;
 
     private String owner_weixin_id;
