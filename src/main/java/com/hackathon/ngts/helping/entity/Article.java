@@ -9,7 +9,7 @@ import java.util.Date;
  * @date 2019-08-29 19:47
  */
 @Data
-public class article {
+public class Article {
 
     private Integer id;
 
