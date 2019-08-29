@@ -7,7 +7,7 @@ import lombok.Data;
  * @date 2019-08-29 19:57
  */
 @Data
-public class category {
+public class Category {
 
     private Integer id;
 

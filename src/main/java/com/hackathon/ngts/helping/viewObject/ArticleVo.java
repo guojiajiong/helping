@@ -1,6 +1,6 @@
 package com.hackathon.ngts.helping.viewObject;
 
-import com.hackathon.ngts.helping.entity.article;
+import com.hackathon.ngts.helping.entity.Article;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -10,11 +10,13 @@ import java.math.BigDecimal;
  * @date 2019-08-29 19:58
  */
 @Data
-public class articleVo extends article {
+public class ArticleVo extends Article {
 
     private String category_name;
 
     private String owner_name;
+
+    private String owner_weixin_id;
 
     private Integer owner_helping_count;
 

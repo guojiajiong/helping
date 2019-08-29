@@ -7,7 +7,7 @@ import lombok.Data;
  * @date 2019-08-29 19:55
  */
 @Data
-public class helping {
+public class Helping {
 
     private Integer user_id;
 

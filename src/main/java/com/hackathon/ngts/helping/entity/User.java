@@ -9,7 +9,7 @@ import java.math.BigDecimal;
  * @date 2019-08-29 19:52
  */
 @Data
-public class user {
+public class User {
 
     private Integer id;
 
