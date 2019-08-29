@@ -4,7 +4,7 @@ spring:
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/demoDb?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
     username: root
-    password: 1234
+    password: 123
 application:
   url: http://wzhj.free.idcfengye.com
 weixin:
@@ -15,5 +15,7 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true
   mapper-locations: classpath*:/mapper/**/*.xml
+security:
+  urlPatterns: /helping/xx/*,/helping/aa/* ##需要登录的URL，以逗号分隔
 
 

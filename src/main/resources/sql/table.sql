@@ -8,7 +8,8 @@ CREATE TABLE `t_user` (
   `helping_count` int(11) DEFAULT NULL COMMENT '成功助力次数',
   `black_count` int(11) DEFAULT NULL COMMENT '被拉黑次数',
   `credit_rate` decimal(10,2) DEFAULT NULL COMMENT '信用度',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  unique (`weixin_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 DROP TABLE IF EXISTS `t_article`;
