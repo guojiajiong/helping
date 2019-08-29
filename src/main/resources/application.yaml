@@ -5,4 +5,15 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/demoDb?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
     username: root
     password: 1234
+application:
+  url: http://wzhj.free.idcfengye.com
+weixin:
+  appId: wxb0a5f97326024a6c
+  appSecret: 853ba807fd9d0cf721813dfe32909070
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath*:/mapper/**/*.xml
+
 
