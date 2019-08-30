@@ -25,7 +25,7 @@ public class Article {
 
     private Integer end_flg;
 
-    private String owner_user_id;
+    private Integer owner_user_id;
 
     private Date create_time;
 

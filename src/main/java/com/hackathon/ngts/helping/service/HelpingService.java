@@ -1,5 +1,7 @@
 package com.hackathon.ngts.helping.service;
 
+import com.hackathon.ngts.helping.auth.Authorization;
+import com.hackathon.ngts.helping.auth.HelpingUser;
 import com.hackathon.ngts.helping.dao.HelpingDao;
 import com.hackathon.ngts.helping.entity.Article;
 import com.hackathon.ngts.helping.entity.Category;
@@ -57,8 +59,15 @@ public class HelpingService {
         int offset = (pageNum-1)*limit;
 
         Map<String, Object> params = new HashMap<>();
-        //todo
-        params.put("user_id", 1);
+        //当前用户
+        HelpingUser user = Authorization.get();
+        if(user!=null && user.getId()!=0) {
+            params.put("user_id", user.getId());
+        }else{
+            throw new RuntimeException("未获得登录用户");
+        }
+
+        //params.put("user_id", 1);
         params.put("limit", limit);
         params.put("offset", offset);
 
@@ -93,10 +102,16 @@ public class HelpingService {
         int offset = (pageNum-1)*limit;
 
         Map<String, Object> params = new HashMap<>();
-        //todo
-        params.put("user_id", 1);
+        //params.put("user_id", 1);
         params.put("limit", limit);
         params.put("offset", offset);
+        //当前用户
+        HelpingUser user = Authorization.get();
+        if(user!=null && user.getId()!=0) {
+            params.put("user_id", user.getId());
+        }else{
+            throw new RuntimeException("未获得登录用户");
+        }
 
         return helpingDao.getMyHelpingList(params);
     }

@@ -1,5 +1,7 @@
 package com.hackathon.ngts.helping.controller;
 
+import com.hackathon.ngts.helping.auth.Authorization;
+import com.hackathon.ngts.helping.auth.HelpingUser;
 import com.hackathon.ngts.helping.entity.Article;
 import com.hackathon.ngts.helping.entity.Category;
 import com.hackathon.ngts.helping.entity.Helping;
@@ -93,7 +95,13 @@ public class HelpingController {
     private ResultVo insertArticle(@RequestBody Article article){
         ResultVo resultVo = new ResultVo();
         try{
-            //todo 当前用户
+            //当前用户
+            HelpingUser user = Authorization.get();
+            if(user!=null && user.getId()!=0) {
+                article.setOwner_user_id(user.getId());
+            }else{
+                throw new RuntimeException("未获得登录用户");
+            }
 
             helpingService.insertArticle(article);
             resultVo.setError(false);
@@ -109,8 +117,14 @@ public class HelpingController {
     private ResultVo insertHelping(@RequestBody Helping helping){
         ResultVo resultVo = new ResultVo();
         try{
-            //todo 当前用户
-            helping.setUser_id(1);
+            //当前用户
+            HelpingUser user = Authorization.get();
+            if(user!=null && user.getId()!=0) {
+                helping.setUser_id(user.getId());
+            }else{
+                throw new RuntimeException("未获得登录用户");
+            }
+
             helpingService.insertHelping(helping);
             resultVo.setError(false);
             resultVo.setErrorMessage("");
