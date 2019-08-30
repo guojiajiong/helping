@@ -12,10 +12,7 @@ import com.hackathon.ngts.helping.viewObject.HelpingVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author guojiajiong
@@ -118,6 +115,16 @@ public class HelpingService {
 
 
     public int insertArticle(Article article){
+        //默认当天
+        if(article.getEnd_time()==null){
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(Calendar.HOUR_OF_DAY,0);
+            calendar.set(Calendar.MINUTE,0);
+            calendar.set(Calendar.SECOND,0);
+            calendar.set(Calendar.MILLISECOND,0);
+            calendar.add(Calendar.DAY_OF_MONTH,1);
+            article.setEnd_time(calendar.getTime());
+        }
 
         article.setCreate_time(new Date());
         return helpingDao.inserArticle(article);
@@ -134,7 +141,9 @@ public class HelpingService {
         params.put("article_id", article_id);
         params.put("user_id", user_id);
 
-        return helpingDao.confirmHelping(params);
+        helpingDao.confirmHelping(params);
+        helpingDao.addHelpingCount(user_id);
+        return 0;
     }
 
 }

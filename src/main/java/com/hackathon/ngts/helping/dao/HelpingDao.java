@@ -94,6 +94,9 @@ public interface HelpingDao {
     @Update(value = {"update t_helping set confirm_flg=1 where user_id = #{user_id} and article_id = #{article_id} "})
     int confirmHelping(Map<String, Object> param);
 
+    @Update(value = {"update t_user set helping_count=helping_count+1 where id=#{id};"})
+    int addHelpingCount(Integer id);
+
 }
 
 
